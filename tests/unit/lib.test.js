@@ -154,4 +154,17 @@ describe('Unit Tests: Helpers & Utilities (lib.js)', () => {
       config.isDemo = originalIsDemo;
     });
   });
+
+  describe('formatArticleSlug', () => {
+    test('should convert title with spaces to lowercase hyphenated slug', () => {
+      const slug = lib.formatArticleSlug('Hello World From HCMUS');
+      expect(slug).toBe('hello-world-from-hcmus');
+    });
+
+    test('should return empty string for falsy or non-string input', () => {
+      expect(lib.formatArticleSlug('')).toBe('');
+      expect(lib.formatArticleSlug(null)).toBe('');
+      expect(lib.formatArticleSlug(undefined)).toBe('');
+    });
+  });
 });
